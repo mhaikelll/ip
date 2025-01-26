@@ -1,7 +1,8 @@
+import java.util.ArrayList;
 import java.util.Scanner;
 
 public class Huhuhuharis {
-    private static Task[] todoList = new Task[100];
+    private static final ArrayList<Task> todoList = new ArrayList<>();
     private static int listCount = 0;
     public static void main(String[] args) {
         System.out.println("--------------------------------------------------------");
@@ -38,6 +39,8 @@ public class Huhuhuharis {
                 return handleDeadline(input);
             } else if (input.startsWith("todo")) {
                 return handleToDo(input);
+            } else if (input.startsWith("delete")) {
+                return deleteTask(input);
             } else {
                 throw new HuhuhuharisException("Invalid command input!");
             }
@@ -49,7 +52,7 @@ public class Huhuhuharis {
     public static String fullList() {
         String fullList = "Here are the tasks in your list:\n";
         for (int i = 0; i < listCount; i++) {
-            fullList += (i + 1) + "." + todoList[i] + "\n";
+            fullList += (i + 1) + "." + todoList.get(i) + "\n";
         }
         return fullList;
     }
@@ -61,9 +64,9 @@ public class Huhuhuharis {
         }
         String from = input.split(" /from ", 2)[1].split(" /to ", 2)[0];
         String to = input.split(" /from ", 2)[1].split(" /to ", 2)[1];
-        todoList[listCount] = new Event(description, from, to);
+        todoList.add(new Event(description, from, to));
         listCount++;
-        return "Got it. I've added this task:\n" + todoList[listCount - 1] + "\nNow you have " + listCount + " tasks in the list.";
+        return "Got it. I've added this task:\n" + todoList.get(listCount - 1) + "\nNow you have " + listCount + " tasks in the list.";
     }
 
     public static String handleDeadline(String input) throws HuhuhuharisException {
@@ -72,9 +75,9 @@ public class Huhuhuharis {
             throw new HuhuhuharisException("Empty Deadline Description!");
         }
         String by = input.split(" /by ", 2)[1];
-        todoList[listCount] = new Deadline(description, by);
+        todoList.add(new Deadline(description, by));
         listCount++;
-        return "Got it. I've added this task:\n" + todoList[listCount - 1] + "\nNow you have " + listCount + " tasks in the list.";
+        return "Got it. I've added this task:\n" + todoList.get(listCount - 1) + "\nNow you have " + listCount + " tasks in the list.";
     }
 
     public static String handleToDo(String input) throws HuhuhuharisException {
@@ -82,21 +85,28 @@ public class Huhuhuharis {
         if (description.isEmpty()) {
             throw new HuhuhuharisException("Empty ToDo Description!");
         }
-        todoList[listCount] = new ToDo(description);
+        todoList.add(new ToDo(description));
         listCount++;
-        return "Got it. I've added this task:\n" + todoList[listCount - 1] + "\nNow you have " + listCount + " tasks in the list.";
+        return "Got it. I've added this task:\n" + todoList.get(listCount - 1) + "\nNow you have " + listCount + " tasks in the list.";
+    }
+
+    public static String deleteTask(String input) {
+        int taskId = Integer.parseInt(input.split(" ")[1]) - 1;
+        Task deletedTask = todoList.remove(taskId);
+        listCount--;
+        return "Noted. I've removed this task:\n" + deletedTask + "\nNow you have " + listCount + " tasks in the list.";
     }
 
     public static String markTask(String input) {
         int taskId = Integer.parseInt(input.split(" ")[1]) - 1;
-        todoList[taskId].mark();
-        return "Nice! I've marked this task as done:\n" + todoList[taskId];
+        todoList.get(taskId).mark();
+        return "Nice! I've marked this task as done:\n" + todoList.get(taskId);
     }
 
     public static String unmarkTask(String input) {
         int taskId = Integer.parseInt(input.split(" ")[1]) - 1;
-        todoList[taskId].unmark();
-        return "OK, I've marked this task as not done yet:\n" + todoList[taskId];
+        todoList.get(taskId).unmark();
+        return "OK, I've marked this task as not done yet:\n" + todoList.get(taskId);
     }
 }
 
