@@ -23,16 +23,26 @@ public class Huhuhuharis {
     }
 
     public static String chatResponse(String input) {
-        if (input.equals("bye")) {
-            return "Bye. Hope to see you again.";
-        } else if (input.equals("list")) {
-            return fullList();
-        } else if (input.startsWith("mark")) {
-            return markTask(input);
-        } else if (input.startsWith("unmark")) {
-            return unmarkTask(input);
-        } else {
-            return addToList(input);
+        try {
+            if (input.equals("bye")) {
+                return "Bye. Hope to see you again.";
+            } else if (input.equals("list")) {
+                return fullList();
+            } else if (input.startsWith("mark")) {
+                return markTask(input);
+            } else if (input.startsWith("unmark")) {
+                return unmarkTask(input);
+            } else if (input.startsWith("event")) {
+                return handleEvent(input);
+            } else if (input.startsWith("deadline")) {
+                return handleDeadline(input);
+            } else if (input.startsWith("todo")) {
+                return handleToDo(input);
+            } else {
+                throw new HuhuhuharisException("Invalid command input!");
+            }
+        } catch (HuhuhuharisException err) {
+            return err.getMessage();
         }
     }
 
@@ -44,20 +54,35 @@ public class Huhuhuharis {
         return fullList;
     }
 
-    public static String addToList(String input) { // change
-        if (input.startsWith("event")) {
-            String description = input.split(" /from ", 2)[0].replace("event", "");
-            String from = input.split(" /from ", 2)[1].split(" /to ", 2)[0];
-            String to = input.split(" /from ", 2)[1].split(" /to ", 2)[1];
-            todoList[listCount] = new Event(description, from, to);
-        } else if (input.startsWith("deadline")) {
-            String description = input.split(" /by ", 2)[0].replace("deadline", "");
-            String by = input.split(" /by ", 2)[1];
-            todoList[listCount] = new Deadline(description, by);
-        } else {
-            String description = input.replace("todo", "");
-            todoList[listCount] = new ToDo(description);
+    public static String handleEvent(String input) throws HuhuhuharisException {
+        String description = input.split(" /from ", 2)[0].replace("event", "");
+        if (description.isEmpty()) {
+            throw new HuhuhuharisException("Empty Event Description!");
         }
+        String from = input.split(" /from ", 2)[1].split(" /to ", 2)[0];
+        String to = input.split(" /from ", 2)[1].split(" /to ", 2)[1];
+        todoList[listCount] = new Event(description, from, to);
+        listCount++;
+        return "Got it. I've added this task:\n" + todoList[listCount - 1] + "\nNow you have " + listCount + " tasks in the list.";
+    }
+
+    public static String handleDeadline(String input) throws HuhuhuharisException {
+        String description = input.split(" /by ", 2)[0].replace("deadline", "");
+        if (description.isEmpty()) {
+            throw new HuhuhuharisException("Empty Deadline Description!");
+        }
+        String by = input.split(" /by ", 2)[1];
+        todoList[listCount] = new Deadline(description, by);
+        listCount++;
+        return "Got it. I've added this task:\n" + todoList[listCount - 1] + "\nNow you have " + listCount + " tasks in the list.";
+    }
+
+    public static String handleToDo(String input) throws HuhuhuharisException {
+        String description = input.replace("todo", "");
+        if (description.isEmpty()) {
+            throw new HuhuhuharisException("Empty ToDo Description!");
+        }
+        todoList[listCount] = new ToDo(description);
         listCount++;
         return "Got it. I've added this task:\n" + todoList[listCount - 1] + "\nNow you have " + listCount + " tasks in the list.";
     }
