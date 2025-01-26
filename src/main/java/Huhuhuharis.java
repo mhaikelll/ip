@@ -1,7 +1,7 @@
 import java.util.Scanner;
 
 public class Huhuhuharis {
-    private static String[] todoList = new String[100];
+    private static Task[] todoList = new Task[100];
     private static int listCount = 0;
     public static void main(String[] args) {
         System.out.println("--------------------------------------------------------");
@@ -27,24 +27,42 @@ public class Huhuhuharis {
             return "Bye. Hope to see you again.";
         } else if (input.equals("list")) {
             return fullList();
+        } else if (input.startsWith("mark")) {
+            return markTask(input);
+        } else if (input.startsWith("unmark")) {
+            return unmarkTask(input);
         } else {
             return addToList(input);
         }
     }
 
     public static String fullList() {
-        String fullList = "";
+        String fullList = "Here are the tasks in your list:\n";
         for (int i = 0; i < listCount; i++) {
-            fullList += (i + 1) + ". " + todoList[i] + "\n";
+            fullList += (i + 1) + "." + todoList[i] + "\n";
         }
         return fullList;
     }
 
     public static String addToList(String input) {
         if (listCount < todoList.length) {
-            todoList[listCount] = input;
+            todoList[listCount] = new Task(input);
             listCount++;
         }
         return "added: " + input;
     }
+
+    public static String markTask(String input) {
+        int taskId = Integer.parseInt(input.split(" ")[1]) - 1;
+        todoList[taskId].mark();
+        return "Nice! I've marked this task as done:\n" + todoList[taskId];
+    }
+
+    public static String unmarkTask(String input) {
+        int taskId = Integer.parseInt(input.split(" ")[1]) - 1;
+        todoList[taskId].unmark();
+        return "OK, I've marked this task as not done yet:\n" + todoList[taskId];
+    }
 }
+
+
