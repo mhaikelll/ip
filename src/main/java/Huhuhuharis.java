@@ -44,12 +44,22 @@ public class Huhuhuharis {
         return fullList;
     }
 
-    public static String addToList(String input) {
-        if (listCount < todoList.length) {
-            todoList[listCount] = new Task(input);
-            listCount++;
+    public static String addToList(String input) { // change
+        if (input.startsWith("event")) {
+            String description = input.split(" /from ", 2)[0].replace("event", "");
+            String from = input.split(" /from ", 2)[1].split(" /to ", 2)[0];
+            String to = input.split(" /from ", 2)[1].split(" /to ", 2)[1];
+            todoList[listCount] = new Event(description, from, to);
+        } else if (input.startsWith("deadline")) {
+            String description = input.split(" /by ", 2)[0].replace("deadline", "");
+            String by = input.split(" /by ", 2)[1];
+            todoList[listCount] = new Deadline(description, by);
+        } else {
+            String description = input.replace("todo", "");
+            todoList[listCount] = new ToDo(description);
         }
-        return "added: " + input;
+        listCount++;
+        return "Got it. I've added this task:\n" + todoList[listCount - 1] + "\nNow you have " + listCount + " tasks in the list.";
     }
 
     public static String markTask(String input) {
