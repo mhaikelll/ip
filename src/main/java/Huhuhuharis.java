@@ -1,3 +1,4 @@
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.Scanner;
 
@@ -65,8 +66,10 @@ public class Huhuhuharis {
         if (description.isEmpty()) {
             throw new HuhuhuharisException("Empty Event Description!");
         }
-        String from = input.split(" /from ", 2)[1].split(" /to ", 2)[0];
-        String to = input.split(" /from ", 2)[1].split(" /to ", 2)[1];
+        String str1 = input.split(" /from ", 2)[1].split(" /to ", 2)[0];
+        String str2 = input.split(" /from ", 2)[1].split(" /to ", 2)[1];
+        LocalDateTime from = Parser.strToDateTime(str1);
+        LocalDateTime to = Parser.strToDateTime(str2);
         todoList.add(new Event(description, from, to));
         listCount++;
         Storage.saveTasks(todoList);
@@ -78,7 +81,8 @@ public class Huhuhuharis {
         if (description.isEmpty()) {
             throw new HuhuhuharisException("Empty Deadline Description!");
         }
-        String by = input.split(" /by ", 2)[1];
+        String str = input.split(" /by ", 2)[1];
+        LocalDateTime by = Parser.strToDateTime(str);
         todoList.add(new Deadline(description, by));
         listCount++;
         Storage.saveTasks(todoList);
