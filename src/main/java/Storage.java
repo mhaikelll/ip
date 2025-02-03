@@ -7,6 +7,12 @@ import java.util.ArrayList;
 import java.util.Scanner;
 
 public class Storage {
+
+    private String path;
+
+    public Storage(String path) {
+        this.path = path;
+    }
     private static final String FILE_PATH = "./data/huhuhuharis.txt";
 
     public static void saveTasks(ArrayList<Task> tasks) {
