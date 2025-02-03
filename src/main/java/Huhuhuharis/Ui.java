@@ -1,3 +1,4 @@
+package Huhuhuharis;
 import java.util.Scanner;
 
 public class Ui {
@@ -6,7 +7,7 @@ public class Ui {
 
     public void showWelcomeMessage() {
         System.out.println("--------------------------------------------------------");
-        System.out.println("Hello! I'm Huhuhuharis");
+        System.out.println("Hello! I'm Huhuhuharis.Huhuhuharis");
         System.out.println("What can I do for you?");
         System.out.println("--------------------------------------------------------");
     }

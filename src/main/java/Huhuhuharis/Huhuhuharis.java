@@ -1,3 +1,4 @@
+package Huhuhuharis;
 import java.time.LocalDateTime;
 
 public class Huhuhuharis {
@@ -9,6 +10,8 @@ public class Huhuhuharis {
         ui = new Ui();
         storage = new Storage("./data/huhuhuharis.txt");
         taskList = new TaskList(Storage.loadTasks());
+        taskList.addAll(Storage.loadTasks());
+        Storage.saveTasks(taskList.getTasks());
     }
 
     public void run() {
@@ -54,7 +57,7 @@ public class Huhuhuharis {
     public static String handleEvent(String input) throws HuhuhuharisException {
         String description = input.split(" /from ", 2)[0].replace("event", "");
         if (description.isEmpty()) {
-            throw new HuhuhuharisException("Empty Event Description!");
+            throw new HuhuhuharisException("Empty Huhuhuharis.Huhuhuharis.Event Description!");
         }
         String str1 = input.split(" /from ", 2)[1].split(" /to ", 2)[0];
         String str2 = input.split(" /from ", 2)[1].split(" /to ", 2)[1];
@@ -68,7 +71,7 @@ public class Huhuhuharis {
     public static String handleDeadline(String input) throws HuhuhuharisException {
         String description = input.split(" /by ", 2)[0].replace("deadline", "");
         if (description.isEmpty()) {
-            throw new HuhuhuharisException("Empty Deadline Description!");
+            throw new HuhuhuharisException("Empty Huhuhuharis.Huhuhuharis.Deadline Description!");
         }
         String str = input.split(" /by ", 2)[1];
         LocalDateTime by = Parser.strToDateTime(str);

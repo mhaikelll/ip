@@ -1,3 +1,4 @@
+package Huhuhuharis;
 import java.util.ArrayList;
 
 public class TaskList {
@@ -51,6 +52,13 @@ public class TaskList {
 
     public void unmarkTask(int taskId) {
         taskLists.get(taskId).unmark();
+    }
+
+    public void addAll(ArrayList<Task> tasks) {
+        if (tasks == null) {
+            throw new NullPointerException("List cannot be null.");
+        }
+        tasks.addAll(taskLists);
     }
 }
 
