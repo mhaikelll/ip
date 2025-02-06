@@ -22,7 +22,6 @@ public class Huhuhuharis {
             String reply = chatResponse(input);
             ui.showTaskList(reply);
             if (input.equals("bye")) {
-                ui.showExitMessage();
                 break;
             }
         }
@@ -35,6 +34,8 @@ public class Huhuhuharis {
                 return "Bye. Hope to see you again.";
             } else if (input.equals("list")) {
                 return taskList.fullList();
+            } else if (input.startsWith("find")) {
+                return findTask(input);
             } else if (input.startsWith("mark")) {
                 return markTask(input);
             } else if (input.startsWith("unmark")) {
@@ -96,6 +97,24 @@ public class Huhuhuharis {
         Task deletedTask = taskList.removeTask(taskId);
         Storage.saveTasks(taskList.getTasks());
         return "Noted. I've removed this task:\n" + deletedTask + "\nNow you have " + taskList.getListCount() + " tasks in the list.";
+    }
+
+    public static String findTask(String input) {
+        String keyword = input.split(" ", 2)[1];
+        StringBuilder result = new StringBuilder();
+        result.append("Here are the matching tasks in your list:\n");
+        boolean isFound = false;
+        for (int i = 0; i < taskList.getListCount(); i++) {
+            Task task = taskList.getTask(i);
+            if (task.getDescription().contains(keyword)) {
+                isFound = true;
+                result.append(i + 1).append(".").append(task).append("\n");
+            }
+        }
+        if (!isFound) {
+            result.append("No tasks found matching the keyword: ").append(keyword);
+        }
+        return result.toString();
     }
 
     public static String markTask(String input) {

@@ -40,11 +40,11 @@ public class TaskList {
     }
 
     public String fullList() {
-        String fullList = "Here are the tasks in your list:\n";
+        StringBuilder fullList = new StringBuilder("Here are the tasks in your list:\n");
         for (int i = 0; i < listCount; i++) {
-            fullList += (i + 1) + "." + taskLists.get(i) + "\n";
+            fullList.append(i + 1).append(".").append(taskLists.get(i)).append("\n");
         }
-        return fullList;
+        return fullList.toString();
     }
 
     public void markDone(int taskId) {
