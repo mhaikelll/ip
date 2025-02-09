@@ -12,9 +12,8 @@ public class Huhuhuharis {
 
     /**
      * Constructs a Huhuhuharis instance with the input file path.
-     * @param path The file path to load the stored tasks.
      */
-    public Huhuhuharis(String path) throws HuhuhuharisException {
+    public Huhuhuharis() {
         ui = new Ui();
         storage = new Storage("./data/huhuhuharis.txt");
         taskList = new TaskList(Storage.loadTasks());
@@ -45,7 +44,7 @@ public class Huhuhuharis {
      * @param input The user input to process.
      * @return The response given to the user.
      */
-    public static String chatResponse(String input) {
+    public String chatResponse(String input) {
         try {
             if (input.equals("bye")) {
                 return "Bye. Hope to see you again.";
@@ -196,7 +195,7 @@ public class Huhuhuharis {
      * @param args Command line arguments.
      */
     public static void main(String[] args) throws HuhuhuharisException {
-        new Huhuhuharis("./data/huhuhuharis.txt").run();
+        new Huhuhuharis().run();
     }
 }
 
