@@ -25,7 +25,6 @@ public class Parser {
     public static LocalDateTime strToDateTime(String str) throws DateTimeParseException {
         try {
             str = str.replaceAll("am", "AM").replaceAll("pm", "PM");
-            System.out.println("Trying to parse date-time: " + str);
             DateTimeFormatter f1 = DateTimeFormatter.ofPattern("MMM dd yyyy hh:mm a");
             return LocalDateTime.parse(str, f1);
         } catch (DateTimeParseException e1) {

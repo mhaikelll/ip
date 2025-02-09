@@ -13,6 +13,10 @@ public class Ui {
         System.out.println("--------------------------------------------------------");
     }
 
+    public String stringWelcomeMessage() {
+        return "Hello! I'm Huhuhuharis. What can I do for you?";
+    }
+
     public void showTaskList(String fullList) {
         System.out.println("--------------------------------------------------------");
         System.out.println(fullList);
