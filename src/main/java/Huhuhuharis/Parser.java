@@ -6,10 +6,22 @@ import java.time.format.DateTimeParseException;
 
 public class Parser {
 
+    /**
+     * Converts a LocalDateTime object to a formatted String.
+     *
+     * @param dateTime The LocalDateTime to convert.
+     * @return A formatted String representation of the LocalDateTime object.
+     */
     public static String dateTimeToStr(LocalDateTime dateTime) {
         return dateTime.format(DateTimeFormatter.ofPattern("MMM dd yyyy hh:mm a"));
     }
 
+    /**
+     * Converts a String to a LocalDateTime object.
+     *
+     * @param str The String to convert.
+     * @return A LocalDateTime object parsed from the String.
+     */
     public static LocalDateTime strToDateTime(String str) throws DateTimeParseException {
         try {
             str = str.replaceAll("am", "AM").replaceAll("pm", "PM");
@@ -27,3 +39,4 @@ public class Parser {
         }
     }
 }
+
