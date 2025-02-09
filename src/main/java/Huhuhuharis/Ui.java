@@ -19,6 +19,11 @@ public class Ui {
         System.out.println("--------------------------------------------------------");
     }
 
+    /**
+     * Retrieves user input through the console by entering a line of text and subsequently returning it.
+     *
+     * @return String input entered through the console.
+     */
     public String getUserInput() {
         Scanner sc = new Scanner(System.in);
         return sc.nextLine();

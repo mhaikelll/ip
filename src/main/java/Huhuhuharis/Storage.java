@@ -12,11 +12,21 @@ public class Storage {
 
     private String path;
 
+    /**
+     * Constructs a Storage object for task storage filing.
+     *
+     * @param path The file path where tasks are saved or loaded from.
+     */
     public Storage(String path) {
         this.path = path;
     }
     private static final String FILE_PATH = "./data/huhuhuharis.txt";
 
+    /**
+     * Handles the saving of tasks to a file in a specific format for future retrieval.
+     *
+     * @param tasks The tasks to be saved to the file.
+     */
     public static void saveTasks(ArrayList<Task> tasks) {
         try {
             File file = new File("./data");
@@ -33,6 +43,11 @@ public class Storage {
         }
     }
 
+    /**
+     * Handles the loading and reconstructing of tasks from the saved file.
+     *
+     * @return Tasks loaded from the file.
+     */
     public static ArrayList<Task> loadTasks() {
         ArrayList<Task> tasks = new ArrayList<>();
         try {

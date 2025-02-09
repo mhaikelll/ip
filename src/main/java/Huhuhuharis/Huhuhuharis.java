@@ -2,11 +2,18 @@ package Huhuhuharis;
 
 import java.time.LocalDateTime;
 
+/**
+ * Represents the main class for the Huhuhuharis program. It handles the overall execution of the program.
+ */
 public class Huhuhuharis {
     private Ui ui;
     private static TaskList taskList;
     private Storage storage;
 
+    /**
+     * Constructs a Huhuhuharis instance with the input file path.
+     * @param path The file path to load the stored tasks.
+     */
     public Huhuhuharis(String path) throws HuhuhuharisException {
         ui = new Ui();
         storage = new Storage("./data/huhuhuharis.txt");
@@ -15,6 +22,10 @@ public class Huhuhuharis {
         Storage.saveTasks(taskList.getTasks());
     }
 
+    /**
+     * Runs the program and continuously receives input until the user enters "bye".
+     * Processes the commands based on the user input.
+     */
     public void run() {
         ui.showWelcomeMessage();
         while (true) {
@@ -28,6 +39,12 @@ public class Huhuhuharis {
         Storage.saveTasks(taskList.getTasks());
     }
 
+    /**
+     * Processes user input and generates responses.
+     *
+     * @param input The user input to process.
+     * @return The response given to the user.
+     */
     public static String chatResponse(String input) {
         try {
             if (input.equals("bye")) {
@@ -56,6 +73,12 @@ public class Huhuhuharis {
         }
     }
 
+    /**
+     * Handles the creation of a new Event task.
+     *
+     * @param input The user's input command.
+     * @return The response message after the Event task is added.
+     */
     public static String handleEvent(String input) throws HuhuhuharisException {
         String description = input.split(" /from ", 2)[0].replace("event", "");
         if (description.isEmpty()) {
@@ -70,6 +93,12 @@ public class Huhuhuharis {
         return "Got it. I've added this task:\n" + taskList.getTask(taskList.getListCount() - 1) + "\nNow you have " + taskList.getListCount() + " tasks in the list.";
     }
 
+    /**
+     * Handles the creation of a new Deadline task.
+     *
+     * @param input The user's input command.
+     * @return The response message after the Deadline task is added.
+     */
     public static String handleDeadline(String input) throws HuhuhuharisException {
         String description = input.split(" /by ", 2)[0].replace("deadline", "");
         if (description.isEmpty()) {
@@ -82,6 +111,12 @@ public class Huhuhuharis {
         return "Got it. I've added this task:\n" + taskList.getTask(taskList.getListCount() - 1) + "\nNow you have " + taskList.getListCount() + " tasks in the list.";
     }
 
+    /**
+     * Handles the creation of a new Todo task.
+     *
+     * @param input The user's input command.
+     * @return The response message after the Todo task is added.
+     */
     public static String handleTodo(String input) throws HuhuhuharisException {
         String description = input.replace("todo", "");
         if (description.isEmpty()) {
@@ -92,6 +127,12 @@ public class Huhuhuharis {
         return "Got it. I've added this task:\n" + taskList.getTask(taskList.getListCount() - 1) + "\nNow you have " + taskList.getListCount() + " tasks in the list.";
     }
 
+    /**
+     * Handles the deletion of a task.
+     *
+     * @param input The user's input command.
+     * @return The response message after the given task is deleted.
+     */
     public static String deleteTask(String input) {
         int taskId = Integer.parseInt(input.split(" ")[1]) - 1;
         Task deletedTask = taskList.removeTask(taskId);
@@ -99,6 +140,12 @@ public class Huhuhuharis {
         return "Noted. I've removed this task:\n" + deletedTask + "\nNow you have " + taskList.getListCount() + " tasks in the list.";
     }
 
+    /**
+     * Handles the finding of a task based on the specified keyword given.
+     *
+     * @param input The user's input command.
+     * @return The response message with the given tasks.
+     */
     public static String findTask(String input) {
         String keyword = input.split(" ", 2)[1];
         StringBuilder result = new StringBuilder();
@@ -117,6 +164,12 @@ public class Huhuhuharis {
         return result.toString();
     }
 
+    /**
+     * Handles the marking of a task as done.
+     *
+     * @param input The user's input command.
+     * @return The response message after the given task is marked as done.
+     */
     public static String markTask(String input) {
         int taskId = Integer.parseInt(input.split(" ")[1]) - 1;
         taskList.markDone(taskId);
@@ -124,6 +177,12 @@ public class Huhuhuharis {
         return "Nice! I've marked this task as done:\n" + taskList.getTask(taskId);
     }
 
+    /**
+     * Handles the unmarking of a task.
+     *
+     * @param input The user's input command.
+     * @return The response message after the given task is unmarked.
+     */
     public static String unmarkTask(String input) {
         int taskId = Integer.parseInt(input.split(" ")[1]) - 1;
         taskList.unmarkTask(taskId);
@@ -131,6 +190,11 @@ public class Huhuhuharis {
         return "OK, I've marked this task as not done yet:\n" + taskList.getTask(taskId);
     }
 
+    /**
+     * Main entry point for the program.
+     *
+     * @param args Command line arguments.
+     */
     public static void main(String[] args) throws HuhuhuharisException {
         new Huhuhuharis("./data/huhuhuharis.txt").run();
     }
