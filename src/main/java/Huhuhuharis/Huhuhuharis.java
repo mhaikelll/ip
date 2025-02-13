@@ -48,6 +48,10 @@ public class Huhuhuharis {
         try {
             if (input.equals("bye")) {
                 return "Bye. Hope to see you again.";
+            } else if (input.equals("suck my dick")) {
+                return "Yes, I would absolutely love that.";
+            } else if (input.equals("can you stop being so annoying")) {
+                return "No, I'm the biggest most annoying loser to ever exist.";
             } else if (input.equals("list")) {
                 return taskList.fullList();
             } else if (input.startsWith("find")) {
@@ -64,6 +68,8 @@ public class Huhuhuharis {
                 return handleTodo(input);
             } else if (input.startsWith("delete")) {
                 return deleteTask(input);
+            } else if (input.startsWith("priority")) {
+                return handlePriority(input);
             } else {
                 throw new HuhuhuharisException("Invalid command input!");
             }
@@ -124,6 +130,22 @@ public class Huhuhuharis {
         taskList.addTask(new Todo(description));
         Storage.saveTasks(taskList.getTasks());
         return "Got it. I've added this task:\n" + taskList.getTask(taskList.getListCount() - 1) + "\nNow you have " + taskList.getListCount() + " tasks in the list.";
+    }
+
+    public static String handlePriority(String input) {
+        String[] parts = input.split(" ", 3);
+        if (parts.length < 3) {
+            return "Invalid priority command. Use: priority [task number] [High/Medium/Low]";
+        }
+        int taskId = Integer.parseInt(parts[1]) - 1;;
+        String priority = parts[2];
+        try {
+            taskList.getTask(taskId).setPriority(priority);
+            Storage.saveTasks(taskList.getTasks());
+            return "Priority set for task:\n" + taskList.getTask(taskId);
+        } catch (IllegalArgumentException e) {
+            return e.getMessage();
+        }
     }
 
     /**

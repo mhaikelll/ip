@@ -28,6 +28,6 @@ public class Deadline extends Task {
      */
     @Override
     public String saveToFile() {
-        return "D | " + (isDone ? "1" : "0") + " | " + description + " | " + Parser.dateTimeToStr(by);
+        return "D | " + (isDone ? "1" : "0") + " | " + description + " | " + Parser.dateTimeToStr(by) + " | " + priority;
     }
 }

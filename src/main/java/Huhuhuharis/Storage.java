@@ -35,7 +35,7 @@ public class Storage {
             }
             FileWriter writer = new FileWriter(FILE_PATH);
             for (Task task : tasks) {
-                writer.write(task.saveToFile() + "\n");
+                writer.write(task.saveToFile() + " | " + task.getPriority() + "\n");
             }
             writer.close();
         } catch (IOException e) {
@@ -61,6 +61,7 @@ public class Storage {
                 String line = sc.nextLine();
                 String[] parts = line.split(" \\| ");
                 Task task = null;
+                String priority = parts[parts.length - 1];
                 switch (parts[0]) {
                     case "T":
                         task = new Todo(parts[2]);
@@ -75,10 +76,13 @@ public class Storage {
                         task = new Event(parts[2], from, to);
                         break;
                 }
-                if (task != null && parts[1].equals("1")) {
-                    task.mark();
+                if (task != null) {
+                    if (parts[1].equals("1")) {
+                        task.mark();
+                    }
+                    task.setPriority(priority);
+                    tasks.add(task);
                 }
-                tasks.add(task);
             }
             sc.close();
         } catch (FileNotFoundException e) {

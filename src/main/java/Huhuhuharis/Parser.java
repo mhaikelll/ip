@@ -3,6 +3,7 @@ package Huhuhuharis;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.time.format.DateTimeParseException;
+import java.util.Locale;
 
 public class Parser {
 
@@ -25,7 +26,7 @@ public class Parser {
     public static LocalDateTime strToDateTime(String str) throws DateTimeParseException {
         try {
             str = str.replaceAll("am", "AM").replaceAll("pm", "PM");
-            DateTimeFormatter f1 = DateTimeFormatter.ofPattern("MMM dd yyyy hh:mm a");
+            DateTimeFormatter f1 = DateTimeFormatter.ofPattern("MMM dd yyyy hh:mm a", Locale.ENGLISH);
             return LocalDateTime.parse(str, f1);
         } catch (DateTimeParseException e1) {
             try {

@@ -31,6 +31,6 @@ public class Event extends Task {
      */
     @Override
     public String saveToFile() {
-        return "E | " + (isDone ? "1" : "0") + " | " + description + " | " + Parser.dateTimeToStr(from) + " | " + Parser.dateTimeToStr(to);
+        return "E | " + (isDone ? "1" : "0") + " | " + description + " | " + Parser.dateTimeToStr(from) + " | " + Parser.dateTimeToStr(to) + " | " + priority;
     }
 }

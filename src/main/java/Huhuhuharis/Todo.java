@@ -22,6 +22,6 @@ public class Todo extends Task {
      */
     @Override
     public String saveToFile() {
-        return "T | " + (isDone ? "1" : "0") + " | " + description;
+        return "T | " + (isDone ? "1" : "0") + " | " + description + " | " + priority;
     }
 }

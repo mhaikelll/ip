@@ -3,6 +3,7 @@ package Huhuhuharis;
 public abstract class Task {
     protected String description;
     protected boolean isDone;
+    protected String priority;
 
     /**
      * Constructs a Task with the specified description, initially unmarked.
@@ -12,6 +13,7 @@ public abstract class Task {
     public Task(String description) {
         this.description = description;
         this.isDone = false;
+        this.priority = "Low";
     }
 
     public String getDescription() {
@@ -41,8 +43,21 @@ public abstract class Task {
         return (isDone ? "X" : " ");
     }
 
+    public void setPriority(String priority) {
+        if (!priority.equalsIgnoreCase("High") &&
+                !priority.equalsIgnoreCase("Medium") &&
+                !priority.equalsIgnoreCase("Low")) {
+            throw new IllegalArgumentException("Priority must be 'High', 'Medium', or 'Low'");
+        }
+        this.priority = priority.substring(0, 1).toUpperCase() + priority.substring(1).toLowerCase();
+    }
+
+    public String getPriority() {
+        return priority;
+    }
+
     public String toString() {
-        return "[" + getStatusIcon() + "] " + description;
+        return "[" + getStatusIcon() + "] " + description + " (Priority: " + priority + ")";
     }
 
     /**
