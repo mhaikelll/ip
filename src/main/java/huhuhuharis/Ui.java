@@ -8,13 +8,13 @@ public class Ui {
 
     public void showWelcomeMessage() {
         System.out.println("--------------------------------------------------------");
-        System.out.println("Hello! I'm Huhuhuharis");
-        System.out.println("What can I do for you?");
+        System.out.println("Huhuhello! I'm Huhuhuharis");
+        System.out.println("What can Huhuhuharis do for you today?");
         System.out.println("--------------------------------------------------------");
     }
 
     public String stringWelcomeMessage() {
-        return "Hello! I'm Huhuhuharis. What can I do for you?";
+        return "Huhuhello! I'm Huhuhuharis. What can Huhuhuharis do for you today?";
     }
 
     public void showTaskList(String fullList) {

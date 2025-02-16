@@ -64,7 +64,7 @@ public class TaskList {
      * @return A string representing all tasks in the list.
      */
     public String fullList() {
-        StringBuilder fullList = new StringBuilder("Here are the tasks in your list:\n");
+        StringBuilder fullList = new StringBuilder("Huhuhuharis found these tasks in your list:\n");
         for (int i = 0; i < listCount; i++) {
             fullList.append(i + 1).append(".").append(taskLists.get(i)).append("\n");
         }

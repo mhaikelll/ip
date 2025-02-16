@@ -46,7 +46,7 @@ public class Huhuhuharis {
     public String chatResponse(String input) {
         try {
             if (input.equals("bye")) {
-                return "Bye. Hope to see you again.";
+                return "Huhubye. Huhuhuharis hopes to see you again.";
             } else if (input.equals("list")) {
                 return taskList.fullList();
             } else if (input.startsWith("find")) {
@@ -98,7 +98,7 @@ public class Huhuhuharis {
         assert from != null && to != null : "Event times should not be null";
         taskList.addTask(new Event(description, from, to));
         Storage.saveTasks(taskList.getTasks());
-        return "Got it. I've added this task:\n" + taskList.getTask(taskList.getListCount() - 1) + "\nNow you have " + taskList.getListCount() + " tasks in the list.";
+        return "Huhuyes! Huhuhuharis added this task:\n" + taskList.getTask(taskList.getListCount() - 1) + "\nNow you have " + taskList.getListCount() + " tasks in the list.";
     }
 
     /**
@@ -121,7 +121,7 @@ public class Huhuhuharis {
         assert by != null : "Deadline time should not be null";
         taskList.addTask(new Deadline(description, by));
         Storage.saveTasks(taskList.getTasks());
-        return "Got it. I've added this task:\n" + taskList.getTask(taskList.getListCount() - 1) + "\nNow you have " + taskList.getListCount() + " tasks in the list.";
+        return "Huhuyes! Huhuhuharis added this task:\n" + taskList.getTask(taskList.getListCount() - 1) + "\nNow you have " + taskList.getListCount() + " tasks in the list.";
     }
 
     /**
@@ -138,7 +138,7 @@ public class Huhuhuharis {
         }
         taskList.addTask(new Todo(description));
         Storage.saveTasks(taskList.getTasks());
-        return "Got it. I've added this task:\n" + taskList.getTask(taskList.getListCount() - 1) + "\nNow you have " + taskList.getListCount() + " tasks in the list.";
+        return "Huhuyes! Huhuhuharis added this task:\n" + taskList.getTask(taskList.getListCount() - 1) + "\nNow you have " + taskList.getListCount() + " tasks in the list.";
     }
 
     public static String handlePriority(String input) throws HuhuhuharisException {
@@ -155,7 +155,7 @@ public class Huhuhuharis {
         try {
             taskList.getTask(taskId).setPriority(priority);
             Storage.saveTasks(taskList.getTasks());
-            return "Priority set for task:\n" + taskList.getTask(taskId);
+            return "Huhuimportant! Priority set for task:\n" + taskList.getTask(taskId);
         } catch (IllegalArgumentException e) {
             return e.getMessage();
         }
@@ -180,7 +180,7 @@ public class Huhuhuharis {
         }
         Task deletedTask = taskList.removeTask(taskId);
         Storage.saveTasks(taskList.getTasks());
-        return "Noted. I've removed this task:\n" + deletedTask + "\nNow you have " + taskList.getListCount() + " tasks in the list.";
+        return "Huhuokay. Huhuhuharis removed this task:\n" + deletedTask + "\nNow you have " + taskList.getListCount() + " tasks in the list.";
     }
 
     /**
@@ -193,7 +193,7 @@ public class Huhuhuharis {
         assert input != null : "Input should not be null";
         String keyword = input.split(" ", 2)[1];
         StringBuilder result = new StringBuilder();
-        result.append("Here are the matching tasks in your list:\n");
+        result.append("Huhuhuharis found these matching tasks in your list:\n");
         boolean isFound = false;
         for (int i = 0; i < taskList.getListCount(); i++) {
             Task task = taskList.getTask(i);
@@ -203,7 +203,7 @@ public class Huhuhuharis {
             }
         }
         if (!isFound) {
-            result.append("No tasks found matching the keyword: ").append(keyword);
+            result.append("Huhuno! Huhuhuharis found no tasks matching the keyword: ").append(keyword);
         }
         return result.toString();
     }
@@ -227,7 +227,7 @@ public class Huhuhuharis {
         }
         taskList.markDone(taskId);
         Storage.saveTasks(taskList.getTasks());
-        return "Nice! I've marked this task as done:\n" + taskList.getTask(taskId);
+        return "Huhuyes! Huhuhuharis marked this task as done:\n" + taskList.getTask(taskId);
     }
 
     /**
@@ -249,7 +249,7 @@ public class Huhuhuharis {
         }
         taskList.unmarkTask(taskId);
         Storage.saveTasks(taskList.getTasks());
-        return "OK, I've marked this task as not done yet:\n" + taskList.getTask(taskId);
+        return "Huhuno! Huhuhuharis marked this task as not done yet:\n" + taskList.getTask(taskId);
     }
 
     /**
