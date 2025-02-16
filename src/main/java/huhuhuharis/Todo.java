@@ -1,4 +1,4 @@
-package Huhuhuharis;
+package huhuhuharis;
 
 public class Todo extends Task {
     /**

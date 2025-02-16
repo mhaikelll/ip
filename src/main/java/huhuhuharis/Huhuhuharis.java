@@ -1,4 +1,4 @@
-package Huhuhuharis;
+package huhuhuharis;
 
 import java.time.LocalDateTime;
 
@@ -253,7 +253,7 @@ public class Huhuhuharis {
     }
 
     /**
-     * Main entry point for the program.
+     * Begins the Huhuhuharis task management program.
      *
      * @param args Command line arguments.
      */
