@@ -1,4 +1,4 @@
-package Huhuhuharis;
+package huhuhuharis;
 
 import java.io.IOException;
 

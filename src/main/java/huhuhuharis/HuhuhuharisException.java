@@ -1,4 +1,4 @@
-package Huhuhuharis;
+package huhuhuharis;
 
 public class HuhuhuharisException extends Exception {
     /**

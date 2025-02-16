@@ -1,4 +1,4 @@
-package Huhuhuharis;
+package huhuhuharis;
 
 public abstract class Task {
     protected String description;

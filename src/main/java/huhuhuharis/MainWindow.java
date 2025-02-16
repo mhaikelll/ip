@@ -1,4 +1,4 @@
-package Huhuhuharis;
+package huhuhuharis;
 
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
@@ -29,7 +29,7 @@ public class MainWindow extends AnchorPane {
 
     public void setHuhuhuharis(Huhuhuharis h) {
         huhuhuharis = h;
-        dialogContainer.getChildren().addAll(DialogBox.getHuhuhuharisDialog(ui.stringWelcomeMessage(), "Huhuhuharis", huhuhuharisImage));
+        dialogContainer.getChildren().addAll(DialogBox.getHuhuhuharisDialog(ui.stringWelcomeMessage(), "huhuhuharis", huhuhuharisImage));
     }
 
     @FXML
@@ -38,7 +38,7 @@ public class MainWindow extends AnchorPane {
         String response = huhuhuharis.chatResponse(input);
         dialogContainer.getChildren().addAll(
                 DialogBox.getUserDialog(input, "You", userImage),
-                DialogBox.getHuhuhuharisDialog(response, "Huhuhuharis", huhuhuharisImage)
+                DialogBox.getHuhuhuharisDialog(response, "huhuhuharis", huhuhuharisImage)
         );
         userInput.clear();
         if (input.equals("bye")) {

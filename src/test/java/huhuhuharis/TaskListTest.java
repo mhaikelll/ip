@@ -1,4 +1,4 @@
-package Huhuhuharis;
+package huhuhuharis;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
