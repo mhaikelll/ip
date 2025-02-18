@@ -29,7 +29,7 @@ public class MainWindow extends AnchorPane {
 
     public void setHuhuhuharis(Huhuhuharis h) {
         huhuhuharis = h;
-        dialogContainer.getChildren().addAll(DialogBox.getHuhuhuharisDialog(ui.stringWelcomeMessage(), "huhuhuharis", huhuhuharisImage));
+        dialogContainer.getChildren().addAll(DialogBox.getHuhuhuharisDialog(ui.stringWelcomeMessage(), "Huhuhuharis", huhuhuharisImage));
     }
 
     @FXML
@@ -38,7 +38,7 @@ public class MainWindow extends AnchorPane {
         String response = huhuhuharis.chatResponse(input);
         dialogContainer.getChildren().addAll(
                 DialogBox.getUserDialog(input, "You", userImage),
-                DialogBox.getHuhuhuharisDialog(response, "huhuhuharis", huhuhuharisImage)
+                DialogBox.getHuhuhuharisDialog(response, "Huhuhuharis", huhuhuharisImage)
         );
         userInput.clear();
         if (input.equals("bye")) {

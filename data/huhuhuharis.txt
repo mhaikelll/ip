@@ -2,5 +2,4 @@ D | 0 |  finish homework | Feb 11 2024 11:59 PM | High | High
 E | 1 |  project meeting | Feb 12 2024 12:00 PM | Feb 12 2024 04:00 PM | Medium | Medium
 T | 0 |  file homework | Medium | Medium
 T | 1 |  eat sushi | Low | Low
-D | 0 |  sushi party | Feb 13 2024 06:00 PM | Low | Low
-D | 0 |  finish assignment | Mar 10 2025 11:59 PM | Low | Low
+D | 0 |  finish assignment | Mar 10 2025 11:59 PM | High | High
