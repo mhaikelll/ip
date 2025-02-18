@@ -1,6 +1,6 @@
 # Huhuhuharis User Guide
 
-<img width="401" alt="UI" src="https://github.com/user-attachments/assets/e1367587-7cf9-4d41-92a9-f3e03d0e26f4" />
+<img width="400" alt="UI" src="https://github.com/user-attachments/assets/77e62ac0-26b5-45d1-a4c9-82efaff98ce1" />
 
 Introducing Huhuhuharis, your personalised task management chatbot! Huhuhuharis assists with efficient task management using simple and hassle-free commands. Whether its adding or deleting tasks, marking them as done, or setting varying priorities, Huhuhuharis always got you covered. To use Huhuhuharis, simply enter a command in the chatbot interface. Listed below are the available commands and their usages.
 
@@ -20,51 +20,61 @@ Introducing Huhuhuharis, your personalised task management chatbot! Huhuhuharis 
 ## Feature 1: List tasks
 
 Command: ```list``` 
+
 Usage: Displays all the tasks in the list.
 
 ## Feature 2: Add todo task
 
-Command: ```list``` <description> 
+Command: ```todo <description>```
+
 Usage: Adds a todo task to the list.
 
 ## Feature 3: Add deadline task
 
-Command: ```list``` <description> /by <yyyy-MM-dd HHmm>
+Command: ```deadline <description> /by <yyyy-MM-dd HHmm>```
+
 Usage: Adds a deadline task to the list.
 
 ## Feature 4: Add event task
 
-Command: ```list``` <description> /from <yyyy-MM-dd HHmm> /to <yyyy-MM-dd HHmm>
+Command: ```event <description> /from <yyyy-MM-dd HHmm> /to <yyyy-MM-dd HHmm>```
+
 Usage: Adds an event task to the list.
 
 ## Feature 5: Mark task
 
-Command: ```list``` <taskId>
+Command: ```mark <taskId>```
+
 Usage: Marks the indicated task as done.
 
 ## Feature 6: Unmark task
 
-Command: ```list``` <taskId>
+Command: ```unmark <taskId>```
+
 Usage: Unmarks the indicated task.
 
 ## Feature 7: Delete task
 
-Command: ```list``` <taskId>
+Command: ```delete <taskId>```
+
 Usage: Deletes the indicated task.
 
 ## Feature 8: Find task
 
-Command: ```find``` <keyword> 
+Command: ```find <keyword>```
+
 Usage: Displays all tasks containing the indicated keyword.
 
 ## Feature 9: Set task priority
 
-Command: ```list``` <taskId> <High/Medium/Low>
+Command: ```priority <taskId> <High/Medium/Low>```
+
 Usage: Sets the indicated task to the specified priority.
 
 ## Feature 10: Exit chatbot
 
 Command: ```bye``` 
+
 Usage: Exits the session.
 
 ## Persistence
