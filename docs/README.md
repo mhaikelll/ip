@@ -27,11 +27,15 @@ Usage: Displays all the tasks in the list.
 
 Command: ```todo <description>```
 
+Example: ```todo eat breakfast```
+
 Usage: Adds a todo task to the list.
 
 ## Feature 3: Add deadline task
 
 Command: ```deadline <description> /by <yyyy-MM-dd HHmm>```
+
+Example: ```deadline finish homework /by 2025-02-23 2359```
 
 Usage: Adds a deadline task to the list.
 
@@ -39,11 +43,15 @@ Usage: Adds a deadline task to the list.
 
 Command: ```event <description> /from <yyyy-MM-dd HHmm> /to <yyyy-MM-dd HHmm>```
 
+Example: ```event project meeting /from 2025-02-23 1600 /to 2025-02-23 1800```
+
 Usage: Adds an event task to the list.
 
 ## Feature 5: Mark task
 
 Command: ```mark <taskId>```
+
+Example: ```mark 1```
 
 Usage: Marks the indicated task as done.
 
@@ -51,11 +59,15 @@ Usage: Marks the indicated task as done.
 
 Command: ```unmark <taskId>```
 
+Example: ```unmark 2```
+
 Usage: Unmarks the indicated task.
 
 ## Feature 7: Delete task
 
 Command: ```delete <taskId>```
+
+Example: ```delete 3```
 
 Usage: Deletes the indicated task.
 
@@ -63,11 +75,15 @@ Usage: Deletes the indicated task.
 
 Command: ```find <keyword>```
 
+Example: ```find homework```
+
 Usage: Displays all tasks containing the indicated keyword.
 
 ## Feature 9: Set task priority
 
 Command: ```priority <taskId> <High/Medium/Low>```
+
+Example: ```priority 3 High```
 
 Usage: Sets the indicated task to the specified priority.
 
